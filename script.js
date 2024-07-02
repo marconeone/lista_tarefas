@@ -1,6 +1,6 @@
 function addTask() {
-    const taskInput = document.getElementById('taskInput');
-    const taskList = document.getElementById('taskList');
+    const taskInput = document.getElementById('inserir_tarefa');
+    const taskList = document.getElementById('item');
 
     if (taskInput.value) {
         const li = document.createElement('li');
