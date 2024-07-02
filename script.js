@@ -8,12 +8,14 @@ function addTask() {
 
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
+        deleteButton.className = 'delete';
         deleteButton.onclick = function() {
             taskList.removeChild(li);
         };
 
         const completeButton = document.createElement('button');
         completeButton.textContent = 'Complete';
+        completeButton.className = 'complete';
         completeButton.onclick = function() {
             li.classList.toggle('completed');
         };
