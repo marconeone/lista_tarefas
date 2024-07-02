@@ -10,7 +10,9 @@ function addTask() {
         deleteButton.textContent = 'Delete';
         deleteButton.className = 'delete';
         deleteButton.onclick = function() {
-            taskList.removeChild(li);
+            if (confirm('Tem certeza que deseja deletar esta tarefa?')) {
+                taskList.removeChild(li);
+            }
         };
 
         const completeButton = document.createElement('button');
@@ -26,4 +28,19 @@ function addTask() {
 
         taskInput.value = '';
     }
+}
+
+async function saveAsPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const taskItems = document.querySelectorAll('#item li');
+    let text = '';
+
+    taskItems.forEach((item, index) => {
+        text += `${index + 1}. ${item.textContent.replace('DeleteComplete', '').trim()}\n`;
+    });
+
+    doc.text(text, 10, 10);
+    doc.save('lista_de_tarefas.pdf');
 }
