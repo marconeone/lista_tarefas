@@ -38,7 +38,8 @@ async function saveAsPDF() {
     let text = '';
 
     taskItems.forEach((item, index) => {
-        text += `${index + 1}. ${item.textContent.replace('DeleteComplete', '').trim()}\n`;
+        const taskText = item.childNodes[0].nodeValue.trim();
+        text += `${index + 1}. ${taskText}\n`;
     });
 
     doc.text(text, 10, 10);
